@@ -2,23 +2,23 @@
 
 namespace app\controllers;
 
+use app\models\ContactForm;
+use app\models\LoginForm;
 use Yii;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 
-class SiteController extends Controller {
+class SiteController extends Controller
+{
 
     /**
      * {@inheritdoc}
      */
-    
-    
-    
-    public function behaviors() {
+
+    public function behaviors()
+    {
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -43,7 +43,8 @@ class SiteController extends Controller {
     /**
      * {@inheritdoc}
      */
-    public function actions() {
+    public function actions()
+    {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -60,44 +61,41 @@ class SiteController extends Controller {
      *
      * @return string
      */
-    public function actionIndex() {
+    public function actionIndex()
+    {
 
         $url = Yii::$app->params['webservice'];
         if (!\Yii::$app->user->isGuest) {
 
             $user_id = \Yii::$app->user->identity->id;
 
-            
-
-            try{
-            
+            try {
 
                 $rows = (new \yii\db\Query())
                     ->select(['check_token'])
                     ->from('check_token')
                     ->where('user_id = :id', [':id' => $user_id])
                     ->all();
-            if (!$user_id) {
-                throw new \Exception;
+                if (!$user_id) {
+                    throw new \Exception;
+                }
+                foreach ($rows as $rows) {
+
+                    $token = $rows['check_token'];
+
+                }
+                // $session = Yii::$app->session;
+                //   $session->set('mytoken', $token);
+                //  $token = $session->get('mytoken');
+                //  echo $token ;
+
+                return $this->render('index'); //login sucsess
+
+            } catch (\Exception $e) {
+
+                //echo "ท่านไม่ได้รับสิทธ";
+                return $this->redirect(['/site/api-err']);
             }
-            foreach ($rows as $rows) {
-
-                $token = $rows['check_token'];
-                
-            }
-           // $session = Yii::$app->session;
-         //   $session->set('mytoken', $token);
-          //  $token = $session->get('mytoken');
-          //  echo $token ;
-        
-            return $this->render('index'); //login sucsess
-
-        } catch (\Exception $e) {
-
-            //echo "ท่านไม่ได้รับสิทธ";
-            return $this->redirect(['/site/api-err']);
-        }
-
 
         }
         return $this->render('index2'); //No login
@@ -108,7 +106,8 @@ class SiteController extends Controller {
      *
      * @return Response|string
      */
-    public function actionLogin() {
+    public function actionLogin()
+    {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -120,16 +119,17 @@ class SiteController extends Controller {
 
         $model->password = '';
         return $this->render('login', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
-
-    public function actionAutoLogin() {
+    public function actionAutoLogin()
+    {
 
         $url = Yii::$app->params['webservice'];
         $email = Yii::$app->params['email'];
         $upassword = Yii::$app->params['ps'];
+        $ip = '127.0.0.1';
 
         $sql = "select * from user where email = '$email'";
         $data = Yii::$app->db->createCommand($sql)->queryAll();
@@ -138,10 +138,8 @@ class SiteController extends Controller {
         }
         foreach ($data as $data) {
             $uid = $data['id'];
-           
-        }
 
-       
+        }
 
         try {
             $curl = curl_init();
@@ -156,13 +154,12 @@ class SiteController extends Controller {
                 CURLOPT_CUSTOMREQUEST => "POST",
                 CURLOPT_POSTFIELDS => "{\r\n\"email\":\"$email\",\r\n\"password\":\"$upassword\"\r\n}\r\n",
                 CURLOPT_HTTPHEADER => array(
-                    "Content-Type: application/json"
+                    "Content-Type: application/json",
                 ),
             ));
 
-
             $response = curl_exec($curl);
-          //  echo $response ;
+            //  echo $response ;
 
             $data = '{
     "success": 1,
@@ -171,25 +168,25 @@ class SiteController extends Controller {
             curl_close($curl);
 
             if (!$response) {
-              //  return $this->redirect('api-error');
+                //  return $this->redirect('api-error');
             }
 
             $json_api0 = json_decode($data, true);
             foreach ($json_api0['data'] as $value) {
-                
+
                 $token = $value['token'];
-                
+
                 $date_creat = date('Y-m-d H:i:s');
-                
+
                 $sql = "REPLACE INTO check_token (user_id,check_token)
                     VALUE('$uid','$token')";
-        \Yii::$app->db->createCommand($sql)->execute();
+                \Yii::$app->db->createCommand($sql)->execute();
+
+                $sql = " INSERT INTO `user_log` (`user_id`, `login_date`, `ip`,`remark`) VALUES ('$uid',NOW(), '$ip','auto-login') ";
+                \Yii::$app->db->createCommand($sql)->execute();
+
             }
-            
-            
-       
-            
-            
+
         } catch (\Exception $e) {
 
             //echo "ท่านไม่ได้รับสิทธ";
@@ -202,10 +199,11 @@ class SiteController extends Controller {
      *
      * @return Response
      */
-    public function actionLogout() {
+    public function actionLogout()
+    {
         $session = Yii::$app->session;
         Yii::$app->user->logout();
-         
+
         return $this->goHome();
     }
 
@@ -214,7 +212,8 @@ class SiteController extends Controller {
      *
      * @return Response|string
      */
-    public function actionContact() {
+    public function actionContact()
+    {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
@@ -222,7 +221,7 @@ class SiteController extends Controller {
             return $this->refresh();
         }
         return $this->render('contact', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -231,11 +230,13 @@ class SiteController extends Controller {
      *
      * @return string
      */
-    public function actionAbout() {
+    public function actionAbout()
+    {
         return $this->render('about');
     }
 
-    public function actionApiErr() {
+    public function actionApiErr()
+    {
         return $this->render('api-err');
     }
 

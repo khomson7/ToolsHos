@@ -2,30 +2,29 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use app\assets\AppAsset;
 use app\widgets\Alert;
-use yii\helpers\Html;
+use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
-use yii\bootstrap4\Breadcrumbs;
-use app\assets\AppAsset;
 //use app\assets\MaterialAsset;
-use yii\bootstrap4\Modal;
+use yii\helpers\Html;
 
 AppAsset::register($this);
 
 //MaterialAsset::register($this);
 //$url = Yii::getAlias("@web") . '/images/';
 ?>
-<?php $this->beginPage() ?>
+<?php $this->beginPage()?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?=Yii::$app->language?>">
     <head>
-        <meta charset="<?= Yii::$app->charset ?>">
+        <meta charset="<?=Yii::$app->charset?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <?= Html::csrfMetaTags() ?>
-        <title><?= Html::encode($this->title) ?></title>
-        <?php $this->head() ?>
+        <?=Html::csrfMetaTags()?>
+        <title><?=Html::encode($this->title)?></title>
+        <?php $this->head()?>
         <link href='https://fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin' rel='stylesheet' type='text/css'>
         <style>
             body {
@@ -50,73 +49,73 @@ AppAsset::register($this);
                 font-family: 'Kanit', sans-serif;
             }
             body  {
-                
-  
-  
+
+
+
   top:0;
   z-index:1;
   width:100%;
   height:100%;
 
                 background-image: url('../web/images/blur.jpg') ;
-                
+
 
             }
 
         </style>
     </head>
     <body>
-        <?php $this->beginBody() ?>
+        <?php $this->beginBody()?>
 
         <div class="wrap">
             <?php
-            NavBar::begin([
-                'brandLabel' => Yii::$app->name,
-                'brandUrl' => Yii::$app->homeUrl,
-                'options' => [
-                    'class' => 'navbar navbar-expand-lg navbar-dark navbar-full bg-default',
-                    
-                ],
-            ]);
+NavBar::begin([
+    'brandLabel' => Yii::$app->name,
+    'brandUrl' => Yii::$app->homeUrl,
+    'options' => [
+        'class' => 'navbar navbar-expand-lg navbar-dark navbar-full bg-secondary',
 
-            $menuItems = [
-            ];
-            if (Yii::$app->user->isGuest) {
-                // $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-                //  $menuItems[] = ['label' => 'เข้าสู่ระบบ', 'url' => ['/user/security/login']];
-            } else {
-                $menuItems[] = '<li>'
-                        . Html::beginForm(['/site/logout'], 'post')
-                        . Html::a('ออกจากระบบ <i class="glyphicon glyphicon-log-out"></i>', ['/site/logout'], [
-                            'data' => [
-                                'method' => 'post',
-                            ],
-                            'class' => 'btn btn-default'
-                        ])
-                        . Html::endForm()
-                        . '</li>';
-            }
-            echo Nav::widget([
-                'options' => ['class' => ''],
-                'items' => $menuItems,
-            ]);
-            NavBar::end();
-            ?>
-            
-            <div class="container-fluid">  
-                
+    ],
+]);
+
+$menuItems = [
+];
+if (Yii::$app->user->isGuest) {
+    // $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
+    //  $menuItems[] = ['label' => 'เข้าสู่ระบบ', 'url' => ['/user/security/login']];
+} else {
+    $menuItems[] = '<li>'
+    . Html::beginForm(['/site/logout'], 'post')
+    . Html::a('ออกจากระบบ <i class="glyphicon glyphicon-log-out"></i>', ['/site/logout'], [
+        'data' => [
+            'method' => 'post',
+        ],
+        'class' => 'btn btn-default',
+    ])
+    . Html::endForm()
+        . '</li>';
+}
+echo Nav::widget([
+    'options' => ['class' => ''],
+    'items' => $menuItems,
+]);
+NavBar::end();
+?>
+
+            <div class="container-fluid">
+
                 <?=
-                Breadcrumbs::widget([
-                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                ])
-                ?>
-                <?= Alert::widget() ?>
+Breadcrumbs::widget([
+    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+])
+?>
+                <?=Alert::widget()?>
 
-                 
 
-                <?= $content ?>
 
-             
+                <?=$content?>
+
+
             </div>
 
         </div>
@@ -124,13 +123,13 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-            <p class="float-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
+            <p class="float-left">&copy; <?=Html::encode(Yii::$app->name)?> <?=date('Y')?></p>
 
 
         </div>
     </footer>
 
-<?php $this->endBody() ?>
+<?php $this->endBody()?>
 </body>
 </html>
-<?php $this->endPage() ?>
+<?php $this->endPage()?>
