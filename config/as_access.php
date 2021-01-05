@@ -12,7 +12,7 @@ return [
         'chkchart/default/chkchart',
         'depress/default/all-auto-sm',
         'depress/default/index',
-        'depress/default/curl-depress',
+        'depress/line/curl-depress',
         // 'admin/*',
     ],
 ];
