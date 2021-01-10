@@ -365,7 +365,7 @@ $this->exec_hos($sql2);
     public function actionAllAutoSm($date1 = null)
     {
 
-        $date0 = now();
+        $date0 = date('Y-m-d');
         $sql = " REPLACE INTO `date_process` (`id`, `b_date`) VALUES ('1',' $date0') ";
         \Yii::$app->db->createCommand($sql)->execute();
 
