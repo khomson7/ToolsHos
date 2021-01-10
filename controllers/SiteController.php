@@ -176,10 +176,10 @@ class SiteController extends Controller
 
                 $token = $value['token'];
 
-                $date_creat = date('Y-m-d H:i:s');
+                $date_update = date('Y-m-d H:i:s');
 
-                $sql = "REPLACE INTO check_token (user_id,check_token)
-                    VALUE('$uid','$token')";
+                $sql = "REPLACE INTO  `check_token`(`user_id`,`check_token`,`date_update`)
+                    VALUE('$uid','$token','$date_update')";
                 \Yii::$app->db->createCommand($sql)->execute();
 
                 $sql = " INSERT INTO `user_log` (`user_id`, `login_date`, `ip`,`remark`) VALUES ('$uid',NOW(), '$ip','auto-login') ";

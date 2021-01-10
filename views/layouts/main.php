@@ -121,6 +121,21 @@ Breadcrumbs::widget([
         </div>
     </div>
 
+
+    <?php
+yii\bootstrap4\Modal::begin([
+    'id' => 'modal',
+    'size' => 'modal-lg',
+]);
+echo "<div id='modalContent'></div>
+    div class='modal-header'>
+
+        <h4 class='modal-title'>Modal Header</h4>
+      </div>
+";
+yii\bootstrap4\Modal::end();
+?>
+
     <footer class="footer">
         <div class="container">
             <p class="float-left">&copy; <?=Html::encode(Yii::$app->name)?> <?=date('Y')?></p>

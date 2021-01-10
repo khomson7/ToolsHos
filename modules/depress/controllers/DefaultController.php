@@ -14,9 +14,9 @@ use yii\web\NotFoundHttpException;
 class DefaultController extends Controller
 {
 
-    protected function exec_hos($sql = null)
+    protected function exec_tbtools($sql = null)
     {
-        return \Yii::$app->db2->createCommand($sql)->execute();
+        return \Yii::$app->db->createCommand($sql)->execute();
     }
 
     public function actionIndex()
@@ -365,6 +365,10 @@ $this->exec_hos($sql2);
     public function actionAllAutoSm($date1 = null)
     {
 
+        $date0 = now();
+        $sql = " REPLACE INTO `date_process` (`id`, `b_date`) VALUES ('1',' $date0') ";
+        \Yii::$app->db->createCommand($sql)->execute();
+
         $url = Yii::$app->params['webservice'];
         $email = Yii::$app->params['email'];
 
@@ -418,16 +422,11 @@ $this->exec_hos($sql2);
         //  $datacount = sizeof($data['data']);
 
         // echo $datacount;
-        /*
+
         foreach ($data['data'] as $key => $item) {
 
-        $date = $item['b_date'];
-        }
-         */
-        if ($date1 == null) {
+            $date1 = $item['d_process'];
 
-            // $date1 = date('Y');
-            $date1 = date('Y-m-d');
         }
 
         $curl = curl_init();
