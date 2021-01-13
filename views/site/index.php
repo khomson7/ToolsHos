@@ -34,15 +34,8 @@ yii\bootstrap4\Modal::end();
 
     <div class="jumbotron">
 
-        <div class="spinner-border text-muted"></div>
-        <div class="spinner-border text-primary"></div>
-        <div class="spinner-border text-success"></div>
-        <div class="spinner-border text-info"></div>
-        <div class="spinner-border text-warning"></div>
-        <div class="spinner-border text-danger"></div>
-        <div class="spinner-border text-secondary"></div>
-        <div class="spinner-border text-dark"></div>
-        <div class="spinner-border text-light"></div>
+        <div class="btn text-muted"></div>
+        
 
         <h1 class="text-primary"><strong>ยินดีต้อนรับเข้าสู่</strong></h1>
 
