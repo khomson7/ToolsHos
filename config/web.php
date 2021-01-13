@@ -4,6 +4,7 @@ Yii::setAlias('@themes', dirname(__DIR__) . '/themes');
 Yii::setAlias('@root', realpath(dirname(__FILE__) . '/../../'));
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$db2 = require __DIR__ . '/dbhos.php';
 /* เรียกใช้งาน จาก as_access.php*/
 $as_access = require __DIR__ . '/as_access.php';
 $modules = require __DIR__ . '/modules.php';
@@ -102,7 +103,7 @@ $config = [
             ],
         ],
         'db' => $db,
-       
+        'db2' => $db2,
     /*
       'urlManager' => [
       'enablePrettyUrl' => true,

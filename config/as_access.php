@@ -13,6 +13,7 @@ return [
         'depress/default/all-auto-sm',
         'depress/default/index',
         'depress/line/curl-depress',
+        'hosxp/default/claimcode',
         // 'admin/*',
     ],
 ];

@@ -26,5 +26,7 @@ return [
     'depress' => [
         'class' => 'app\modules\depress\Module',
     ],
-    
+    'hosxp' => [
+        'class' => 'app\modules\hosxp\Module',
+    ],
 ];

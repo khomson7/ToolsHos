@@ -65,11 +65,9 @@ yii\bootstrap4\Modal::end();
                 <div class="panel-body"
 
                      <div class="alert bg_col_pinkligth" role="alert">
+                   
                     <div class="btn-group btn-group-lg" role="group" aria-label="..."><p>
-                            <?=Html::a('<i class=""></i> ข้อมูลผู้ป่วยใน(IPD)', ['/ipt/default/ipt-adm'], ['class' => 'btn btn-warning'])?>
-                        </p></div>
-                    <div class="btn-group btn-group-lg" role="group" aria-label="..."><p>
-                            <?=Html::a('<i class=""></i> ค้นคืนข้อมูลบุคคล', ['/ipt/default/patient'], ['class' => 'btn btn-danger'])?>
+                            <?=Html::a('<i class=""></i> ClaimCode', ['/hosxp/visit-pttype/claimcode'], ['class' => 'btn btn-danger'])?>
                         </p></div>
 
 
