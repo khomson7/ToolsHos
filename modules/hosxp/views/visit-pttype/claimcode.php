@@ -105,3 +105,41 @@ echo GridView::widget([
     ],
 ]);
 ?>
+
+<div class="alert bg_col_pink" role="alert">
+    <div>รายการ ClaimCode</div>
+<?php
+echo GridView::widget([
+    'dataProvider' => $dataProvider2,
+    'formatter' => ['class' => 'yii\i18n\Formatter', 'nullDisplay' => '-'],
+    
+  
+    
+    'columns' => [
+        [
+            'attribute' => 'claim_code',
+            'label' => "ClaimCode",
+        ],
+        [
+            'attribute' => 'hosmain',
+            'label' => "สถานพยาบาลหลัก",
+        ],
+       
+                    [
+            'attribute' => 'cid',
+            'label' => "CID",
+        ],
+        [
+            'attribute' => 'ptname',
+            'label' => "ชื่อ - สกุล",
+        ],
+        
+        [
+            'attribute' => 'pttname',
+            'label' => "ชื่อสิทธ",
+        ],
+
+    ],
+]);
+?>
+</div>
