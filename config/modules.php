@@ -19,7 +19,7 @@ return [
     ],
     'rbac' => 'dektrium\rbac\RbacWebModule',
     'gridview' => [
-        'class' => '\kartik\grid\Module',
+       'class' => '\kartik\grid\Module',
     ],
 
     //เพิ่ม app\modules

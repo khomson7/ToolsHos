@@ -6,6 +6,7 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\grid\GridView;
+//use kartik\grid\GridView;
 
 $this->title = 'ข้อมูล Claimcode';
 $this->params['breadcrumbs'][] = $this->title;
@@ -16,9 +17,10 @@ $form = ActiveForm::begin(['method' => 'get',
     'action' => Url::to(['visit-pttype/claimcode'])]);
 ?>
 
-
+<div class="d-flex flex-column">
+     <div class="d-flex justify-content-center">  
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="panel panel-primary">
                 <div class="panel-heading"><i class="fa fa-search"></i> ค้นหา</div>
                 <div class="panel-body">
@@ -37,6 +39,8 @@ $form = ActiveForm::begin(['method' => 'get',
             </div>
         </div>
     </div>
+</div>
+</div>
 
     <?php ActiveForm::end();?>
 
@@ -44,12 +48,9 @@ $form = ActiveForm::begin(['method' => 'get',
 echo GridView::widget([
     'dataProvider' => $dataProvider,
     'formatter' => ['class' => 'yii\i18n\Formatter', 'nullDisplay' => '-'],
-    
-  
-    
     'columns' => [
         
-       
+        
         
         [
             'attribute' => 'vstdate',
@@ -116,6 +117,10 @@ echo GridView::widget([
   
     
     'columns' => [
+         [
+            'class' => 'yii\grid\SerialColumn',
+        ]
+        ,
         [
             'attribute' => 'claim_code',
             'label' => "ClaimCode",

@@ -62,6 +62,9 @@ yii\bootstrap4\Modal::end();
                     <div class="btn-group btn-group-lg" role="group" aria-label="..."><p>
                             <?=Html::a('<i class=""></i> ClaimCode', ['/hosxp/visit-pttype/claimcode'], ['class' => 'btn btn-danger'])?>
                         </p></div>
+                        <div class="btn-group" role="group" aria-label="..."><p>
+                            <?=Html::a('<i class="fa fa-cloud"></i> ระบบรายงาน', ['/hosxp/default/report1'], ['class' => 'btn btn-info'])?>
+                        </p></div>
 
 
                 </div>

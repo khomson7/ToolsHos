@@ -57,7 +57,7 @@ AppAsset::register($this);
   width:100%;
   height:100%;
 
-                background-image: url('../web/images/blur.jpg') ;
+              background-image: url('../web/images/blur.jpg') ;
 
 
             }
@@ -102,7 +102,7 @@ echo Nav::widget([
 NavBar::end();
 ?>
 
-            <div class="container-fluid">
+            
 
                 <?=
 Breadcrumbs::widget([
@@ -110,8 +110,6 @@ Breadcrumbs::widget([
 ])
 ?>
                 <?=Alert::widget()?>
-
-
 
                 <?=$content?>
 
