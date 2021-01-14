@@ -32,29 +32,33 @@ yii\bootstrap4\Modal::end();
 
 <div class="site-index">
 
-    <div class="jumbotron">
 
-        <div class="btn text-muted"></div>
-        
-
+    <div class="d-flex justify-content-center">
         <h1 class="text-primary"><strong>ยินดีต้อนรับเข้าสู่</strong></h1>
-
-
+            
+                      </div>
+                      <div class="d-flex justify-content-center">
         <p class="text-danger">ระบบจัดการข้อมูลหน่วยบริการ</p>
+                  </div>
 
         <?php if (Yii::$app->user->isGuest) {?>
+             <div class="d-flex justify-content-center">
             <p>
                 <?=Html::a('<i class="glyphicon glyphicon-log-in"></i> เข้าสู่ระบบ', ['/user/security/login'], ['class' => 'btn btn-warning'])?>
             </p>
+        </div>
         <?php }?>
 
         <?php if (!Yii::$app->user->isGuest) {?>
-
+                    <div class="d-flex justify-content-center">
             <h3><?=Html::a('(' . (Yii::$app->user->identity->username) . ')')?></h3>
-
+             </div>
                <?php if (Yii::$app->user->identity->role == app\models\Users::ROLE_PR) {?>
+                <div class="d-flex justify-content-center">
             <div class="panel panel-primary">
+                <div class="d-flex justify-content-center">
                 <div class="text-success"><h4><?=$this->title?>MENU</h4></div>
+            </div>
                 <div class="panel-body"
 
                      <div class="alert bg_col_pinkligth" role="alert">
@@ -70,10 +74,14 @@ yii\bootstrap4\Modal::end();
                 </div>
 
             </div>
+        </div>
             <?php }?>
             <?php if (Yii::$app->user->identity->role != app\models\Users::ROLE_PR) {?>
+                <div class="d-flex justify-content-center">
                 <div class="panel panel-primary">
+                 <div class="d-flex justify-content-center">
                 <div class="text-success"><h4><?=$this->title?>MENU</h4></div>
+                 </div>
                 <div class="panel-body"
 
                      <div class="alert bg_col_pinkligth" role="alert">
@@ -93,6 +101,7 @@ yii\bootstrap4\Modal::end();
         <?php }?>
 
     </div>
+</div>
 
 
 

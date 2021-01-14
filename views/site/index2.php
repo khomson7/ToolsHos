@@ -9,21 +9,27 @@ use yii\helpers\Url;
 $this->title = 'Tools-Hos';
 ?>
 <div class="site-index">
+    
+ 
 
      <div class="jumbotron">
         
-   
-
+  
+             <div class="d-flex justify-content-center">
         <h1 class="text-primary"><strong>ยินดีต้อนรับเข้าสู่</strong></h1>
-
-
+            
+                      </div>
+                      <div class="d-flex justify-content-center">
         <p class="text-danger">ระบบจัดการข้อมูลหน่วยบริการ</p>
-
+                  </div>
             <?php if (Yii::$app->user->isGuest) { ?>
+                <div class="d-flex justify-content-center">
             <p>
             <?= Html::a('<i class="glyphicon glyphicon-log-in"></i> เข้าสู่ระบบ', ['/user/security/login'], ['class' => 'btn btn-warning']) ?>
             </p>
+        </div>
         <?php } ?>
+
 
         <?php if (!Yii::$app->user->isGuest) { ?>
             

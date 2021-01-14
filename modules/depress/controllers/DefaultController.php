@@ -313,18 +313,7 @@ class DefaultController extends Controller
 
             curl_close($curl);
 
-/*
-$sql = "INSERT IGNORE INTO pp_special(pp_special_id,vn,pp_special_type_id,doctor,pp_special_service_place_type_id,entry_datetime,dest_hospcode,hn)
-VALUE('$pp_special_id','$vn','$pp_special_type_id','$doctor','$pp_special_service_place_type_id','$entry_datetime','$dest_hospcode','$hn')";
-$this->exec_hos($sql);
 
- */
-/*
-$sql2 = "update serial
-SET serial_no = (select max(pp_special_id) FROM pp_special)
-WHERE name = 'pp_special_id'";
-$this->exec_hos($sql2);
- */
         }
 
         $curl = curl_init();

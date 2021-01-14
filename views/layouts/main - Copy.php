@@ -7,13 +7,13 @@ use app\widgets\Alert;
 use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
-use app\assets\MaterialAsset;
+//use app\assets\MaterialAsset;
 use yii\helpers\Html;
 
-//AppAsset::register($this);
+AppAsset::register($this);
 
-MaterialAsset::register($this);
-$url = Yii::getAlias("@web") . '/images/';
+//MaterialAsset::register($this);
+//$url = Yii::getAlias("@web") . '/images/';
 ?>
 <?php $this->beginPage()?>
 <!DOCTYPE html>

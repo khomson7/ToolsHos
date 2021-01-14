@@ -14,22 +14,20 @@ class MaterialAsset extends AssetBundle {
     public $sourcePath = '@themes/material';
     public $baseUrl = '@web';
     public $css = [
-       // 'css/material-wfont.min.css',
-       // 'css/material.min.css',
-        'css/ripples.min.css',
-        'css/mycss.css',
-         'css/style.css',
-        'css/hosreport.css',
+        //'css/material-wfont.min.css',
+        'css/material.min.css',
+       // 'css/ripples.min.css',
+       // 'css/mycss.css',
+        //'css/style.css',
     ];
     public $js = [
         'js/material.min.js',
         'js/ripples.min.js',
-        'js/ajax-modal-popup.js',
        // 'js/main.js'
     ];
     public $depends = [
 
         'yii\web\YiiAsset',
-        'yii\bootstrap4\BootstrapAsset', // bootstrap4
+        'yii\bootstrap\BootstrapAsset',
     ];
 }
