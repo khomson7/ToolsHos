@@ -27,8 +27,9 @@ $config = [
             //'identityClass' => 'app\models\User',
             'identityClass' => 'dektrium\user\models\User',
             'enableAutoLogin' => false,
-            'authTimeout' => 3600 * 1,
+            'authTimeout' => 60 * 1,
         ],
+
         /*
 	'session' => [
 		    

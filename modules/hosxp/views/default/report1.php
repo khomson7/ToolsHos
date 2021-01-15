@@ -144,10 +144,7 @@ echo yii\jui\DatePicker::widget([
                'attribute' => 'pttname',
             'label' => "ชื่อสิทธิ",
         ],
-        [
-               'attribute' => 'pttname',
-            'label' => "ชื่อสิทธิ",
-        ],
+        
         [
                'attribute' => 'staff',
             'label' => "ผู้บันทึก",

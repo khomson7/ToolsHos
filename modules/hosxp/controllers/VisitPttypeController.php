@@ -55,6 +55,8 @@ class VisitPttypeController extends Controller
         }
 
         try {
+
+        
             $curl = curl_init();
             curl_setopt_array($curl, array(
                 CURLOPT_URL => "$url/claimcodes/visit/$user", //เปลี่ยนแปลง
@@ -75,6 +77,7 @@ class VisitPttypeController extends Controller
             $response = curl_exec($curl);
 
             curl_close($curl);
+
 
             $data = json_decode($response, true);
 
