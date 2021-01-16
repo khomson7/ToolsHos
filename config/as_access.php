@@ -3,7 +3,7 @@
 return [
     'class' => 'mdm\admin\components\AccessControl',
     'allowActions' => [
-        'site/index',
+       // 'site/index',
         'site/api-err',
         'site/auto-login',
         'site/logout',
