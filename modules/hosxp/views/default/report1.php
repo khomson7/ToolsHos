@@ -135,6 +135,10 @@ echo yii\jui\DatePicker::widget([
                'attribute' => 'cid',
             'label' => "CID",
         ],
+        [
+               'attribute' => 'hn',
+            'label' => "HN",
+        ],
        
         [
                'attribute' => 'ptname',
