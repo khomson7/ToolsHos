@@ -26,6 +26,8 @@ $url = Yii::getAlias("@web") . '/images/';
         <title><?=Html::encode($this->title)?></title>
         <?php $this->head()?>
         <link href='https://fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin' rel='stylesheet' type='text/css'>
+
+        <script src="http://code.jquery.com/jquery.js"></script>
         <style>
             body {
                 font-family: 'Kanit', sans-serif;

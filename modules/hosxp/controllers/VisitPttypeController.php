@@ -31,15 +31,16 @@ class VisitPttypeController extends Controller
     
     public function actionClaimcode($user = null)
     {
-        $url = Yii::$app->params['webservice1'];
+        $url = Yii::$app->params['webservice'];
         if ($user == null) {
             $user = '';
         }
 
+         $date_now = date('Y-m-d H:i:s');
         //$url = Yii::$app->params['webservice'];
         $user_id = Yii::$app->user->getId();
         $rows = (new \yii\db\Query())
-            ->select(['check_token','opduser'])
+            ->select(['check_token','opduser','expire_date'])
             ->from('check_token')
             ->join('INNER JOIN', 'user', 'user.id =check_token.user_id')
             ->where('user_id = :id', [':id' => $user_id])
@@ -51,10 +52,18 @@ class VisitPttypeController extends Controller
 
             $token = $rows['check_token'];
             $opduser = $rows['opduser'];
+            $expire_date = $rows['expire_date'];
 
         }
 
-            $token = 'admin';
+         if ($expire_date < $date_now) {
+
+return $this->redirect(['/site/api-err']);            
+
+         }
+
+
+
         try {
 
         
@@ -76,26 +85,29 @@ class VisitPttypeController extends Controller
                 ),
             ));
 
+
             $response = curl_exec($curl);
 
-            $err = curl_error($curl);
- 
-               curl_close($curl);
- 
-              if ($err) {
-          
-
-session_start();
-
-session_destroy();      
-
-$this->redirect(Yii::app()->homeUrl);
-
-             } 
-
+            curl_close($curl);
 
             $data = json_decode($response, true);
 
+
+
+/*
+          $err = curl_error($curl);
+          curl_close($curl);
+          if ($err) {
+          
+        
+            return $this->redirect(['/site/api-err']);
+
+                         } else {
+             $response = curl_exec($curl);
+               curl_close($curl);
+            $data = json_decode($response, true);
+            }*/
+   
             $dataProvider = new ArrayDataProvider([
                 'allModels' => $data,
                 'pagination' => false, /* [
@@ -217,7 +229,7 @@ $this->redirect(Yii::app()->homeUrl);
     {
         $model = $this->findModel($vn, $pttype);
         
-        $url = Yii::$app->params['webservice1'];
+        $url = Yii::$app->params['webservice'];
         $user_id = Yii::$app->user->getId();
         $rows = (new \yii\db\Query())
             ->select(['check_token','opduser'])
@@ -318,7 +330,7 @@ $this->redirect(Yii::app()->homeUrl);
 
     public function actionTestError()
     {
-        $url = Yii::$app->params['webservice1'];
+        $url = Yii::$app->params['webservice'];
         $user = 'admin';
         $token = 'admin';
         

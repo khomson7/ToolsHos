@@ -7,6 +7,9 @@ use yii\helpers\ArrayHelper;
 use kartik\grid\GridView;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+
+$this->title = 'รายงานบันทึก ClaimCode';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <?php
