@@ -88,11 +88,13 @@ yii\bootstrap4\Modal::end();
                     <div class="btn-group btn-group-lg" role="group" aria-label="..."><p>
                             <?=Html::a('<i class=""></i> บุหรี่-สุรา(specialpp)', ['/depress/default/allsm'], ['class' => 'showModalButton btn btn-warning'])?>
                         </p></div>
+						<!--
                     <div class="btn-group" role="group" aria-label="..."><p>
-                            <?=Html::a('<i class="fa fa-cloud"></i> 2Q(specialpp)', ['/depress'], ['class' => 'btn btn-danger'])?>
-                        </p></div>
+                            <?php //Html::a('<i class="fa fa-cloud"></i> 2Q(specialpp)', ['/depress'], ['class' => 'btn btn-danger'])?>
+                        </p></div> -->
+						
                     <div class="btn-group btn-group-sm" role="group" aria-label="..."><p>
-                            <?=Html::a('<i class="fa fa-cloud"></i> รอดำเนินการ', ['/'], ['class' => 'btn btn-info'])?>
+                            <?=Html::a('<i class="fa fa-cloud"></i> รายงาน ClaimCode', ['/hosxp/default/report1'], ['class' => 'btn btn-info'])?>
                         </p></div>
                 </div>
 
