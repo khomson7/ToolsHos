@@ -1,6 +1,6 @@
 <?php
 
-use yii\bootstrap4\Html;
+use yii\bootstrap\Html;
 
 /* @var $this yii\web\View */
 
@@ -52,7 +52,11 @@ yii\bootstrap4\Modal::end();
         <?php if (!Yii::$app->user->isGuest) {?>
                     <div class="d-flex justify-content-center">
             <h3><?=Html::a('(' . (Yii::$app->user->identity->username) . ')')?></h3>
+            </div>
+            <div class="d-flex justify-content-center">
+            <?=Html::a('<i class=" fa fa-cog"></i>', ['/user/admin'], ['class' => ''])?>
              </div>
+             
                <?php if (Yii::$app->user->identity->role == app\models\Users::ROLE_PR) {?>
                 <div class="d-flex justify-content-center">
             <div class="panel panel-primary">
@@ -84,26 +88,40 @@ yii\bootstrap4\Modal::end();
                  </div>
                 <div class="panel-body"
 
-                     <div class="alert bg_col_pinkligth" role="alert">
+                     <div>
+                     <div class="d-flex justify-content-center">
                     <div class="btn-group btn-group-lg" role="group" aria-label="..."><p>
-                            <?=Html::a('<i class=""></i> บุหรี่-สุรา(specialpp)', ['/depress/default/allsm'], ['class' => 'showModalButton btn btn-warning'])?>
+                            <?=Html::a('<i class="fa fa-plus"></i> บุหรี่-สุรา(specialpp)', ['/depress/default/allsm'], ['class' => 'showModalButton btn btn-danger'])?>
                         </p></div>
-						<!--
-                    <div class="btn-group" role="group" aria-label="..."><p>
-                            <?php //Html::a('<i class="fa fa-cloud"></i> 2Q(specialpp)', ['/depress'], ['class' => 'btn btn-danger'])?>
-                        </p></div> -->
-						
-                    <div class="btn-group btn-group-sm" role="group" aria-label="..."><p>
-                            <?=Html::a('<i class="fa fa-cloud"></i> รายงาน ClaimCode', ['/hosxp/default/report1'], ['class' => 'btn btn-info'])?>
-                        </p></div>
+						</div>
+                  
                 </div>
 
-            </div>
+        
+                <div>------------------------------------------</div>
+
+                <div class="d-flex justify-content-center">
+                <div class="text-primary"><h4><?=$this->title?>Report</h4></div>
+                 </div>
+
+                 <div class="panel-body"
+
+                     <div>
+                   
+                     <div class="d-flex justify-content-center">
+                    <div class="btn-group btn-group-sm" role="group" aria-label="..."><p>
+                            <?=Html::a('<i class="fa fa-cloud"></i> ข้อมูลรายงาน', ['/hosxp/default/index'], ['class' => 'btn btn-info'])?>
+                        </p></div>
+                        </div>
+                </div>
+
+                
+               
+
+           
             <?php }?>
         <?php }?>
 
     </div>
 </div>
-
-
 

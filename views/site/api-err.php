@@ -4,6 +4,7 @@
 /* @var $name string */
 /* @var $message string */
 /* @var $exception Exception */
+use aryelds\sweetalert\SweetAlert;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\Modal;

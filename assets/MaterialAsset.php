@@ -18,18 +18,20 @@ class MaterialAsset extends AssetBundle {
        // 'css/material.min.css',
         'css/ripples.min.css',
         'css/mycss.css',
-         'css/style.css',
-        'css/hosreport.css',
+        // 'css/style.css',
+       // 'css/hosreport.css',
+
     ];
     public $js = [
         'js/material.min.js',
         'js/ripples.min.js',
-        'js/ajax-modal-popup.js',
+      // 'js/ajax-modal-popup.js',
        // 'js/main.js'
     ];
     public $depends = [
 
         'yii\web\YiiAsset',
         'yii\bootstrap4\BootstrapAsset', // bootstrap4
+        'yidas\yii\fontawesome\FontawesomeAsset',
     ];
 }

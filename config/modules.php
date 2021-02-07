@@ -29,4 +29,7 @@ return [
     'hosxp' => [
         'class' => 'app\modules\hosxp\Module',
     ],
+    'wsc' => [
+        'class' => 'app\modules\wsc\Module',
+    ],
 ];

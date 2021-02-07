@@ -316,6 +316,42 @@ class DefaultController extends Controller
 
         }
 
+        foreach ($data['data'] as $key => $item2) {
+
+            
+            $vn = $item2['vn']; 
+            $entry_datetime = $item2['entry_datetime'];
+            $hn = $item['hn'];
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => "$url/ppspecials/psmonit",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS => "{
+                \"vn\":\"$vn\",
+                \"entry_datetime\":\"$entry_datetime\",
+                \"hn\":\"$hn\"
+                    }",
+                CURLOPT_HTTPHEADER => array(
+                    "Authorization: Bearer $token",
+                    "Content-Type: application/json",
+                ),
+            ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+
+
+        }
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(

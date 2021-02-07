@@ -11,7 +11,7 @@ use app\assets\MaterialAsset;
 use yii\helpers\Html;
 
 //AppAsset::register($this);
-
+\yidas\yii\fontawesome\FontawesomeAsset::register($this);
 MaterialAsset::register($this);
 $url = Yii::getAlias("@web") . '/images/';
 ?>
@@ -26,6 +26,7 @@ $url = Yii::getAlias("@web") . '/images/';
         <title><?=Html::encode($this->title)?></title>
         <?php $this->head()?>
         <link href='https://fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin' rel='stylesheet' type='text/css'>
+        
 
         <script src="http://code.jquery.com/jquery.js"></script>
         <style>
@@ -67,7 +68,10 @@ $url = Yii::getAlias("@web") . '/images/';
         </style>
     </head>
     <body>
+ 
         <?php $this->beginBody()?>
+
+
 
         <div class="wrap">
             <?php
@@ -75,7 +79,7 @@ NavBar::begin([
     'brandLabel' => Yii::$app->name,
     'brandUrl' => Yii::$app->homeUrl,
     'options' => [
-        'class' => 'navbar navbar-expand-lg navbar-dark navbar-full bg-secondary',
+        'class' => 'navbar navbar-expand-lg navbar-dark navbar-full bg-success',
 
     ],
 ]);
@@ -86,19 +90,30 @@ if (Yii::$app->user->isGuest) {
     // $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
     //  $menuItems[] = ['label' => 'เข้าสู่ระบบ', 'url' => ['/user/security/login']];
 } else {
+
     $menuItems[] = '<li>'
     . Html::beginForm(['/site/logout'], 'post')
-    . Html::a('ออกจากระบบ <i class="glyphicon glyphicon-log-out"></i>', ['/site/logout'], [
+    . Html::a('ออกจากระบบ <i class="fa fa-sign-out"></i>', ['/site/logout'], [
         'data' => [
             'method' => 'post',
         ],
-        'class' => 'btn btn-default',
+        'class' => 'btn btn-danger',
     ])
     . Html::endForm()
         . '</li>';
+       
+/*
+        $menuItems[] =  [
+            'label' => 'ออกจากระบบ',
+            'url' => ['/site/logout'],
+            'class' => 'btn btn-danger',
+            'linkOptions' => ['data-method' => 'post']
+            
+        ];*/
 }
 echo Nav::widget([
-    'options' => ['class' => ''],
+    'options' => ['class'=>'navbar-nav ml-auto'],
+    'encodeLabels' => false,
     'items' => $menuItems,
 ]);
 NavBar::end();
@@ -124,15 +139,16 @@ Breadcrumbs::widget([
 
     <?php
 yii\bootstrap4\Modal::begin([
+    'headerOptions' => ['id' => 'modalHeader'],
     'id' => 'modal',
     'size' => 'modal-lg',
-]);
-echo "<div id='modalContent'></div>
-    div class='modal-header'>
 
-        <h4 class='modal-title'>Modal Header</h4>
-      </div>
-";
+    'clientOptions' => [
+        'backdrop' => false,
+        'keyboard' => false,
+    ],
+]);
+echo "<div id='modalContent'> <h3> กำลังประมวลผลข้อมูลกรุณารอสักครู่ </h3> <div style='text-align:center'>" . Html::img('@web/images/ajax-loader.gif') . "</div></div>";
 yii\bootstrap4\Modal::end();
 ?>
 

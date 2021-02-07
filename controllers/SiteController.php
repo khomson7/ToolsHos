@@ -43,8 +43,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function actions()
-    {
+    public function actions() {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -68,6 +67,13 @@ class SiteController extends Controller
     {
 
         $url = Yii::$app->params['webservice'];
+
+        try {
+            $data_api0 = file_get_contents("$url");
+            $json_api0 = json_decode($data_api0, true);
+        } catch (\Exception $e) {
+            return $this->redirect(['/site/api-error']);
+        }
         if (!\Yii::$app->user->isGuest) {
 
             $user_id = \Yii::$app->user->identity->id;
@@ -238,9 +244,9 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public function actionApiErr()
+    public function actionApiError()
     {
-        return $this->render('api-err');
+        return $this->render('_notoken');
     }
 
 }

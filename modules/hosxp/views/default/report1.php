@@ -8,9 +8,11 @@ use kartik\grid\GridView;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
+$this->params['breadcrumbs'][] = ['label' => 'รายงาน', 'url' => ['/hosxp/default/index']];
 $this->title = 'รายงานบันทึก ClaimCode';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 
 <?php
 yii\bootstrap4\Modal::begin([
@@ -34,8 +36,7 @@ yii\bootstrap4\Modal::begin([
 echo "<div id='modalContent'> <h3> กำลังประมวลผลข้อมูลกรุณารอสักครู่ </h3> <div style='text-align:center'>" . Html::img('@web/images/ajax-loader.gif') . "</div></div>";
 yii\bootstrap4\Modal::end();
 ?>
-
-
+<div class="container p-3 my-3 bg-default text-white">
 <div class="panel panel-primary">
     <div class="panel-heading"><i class="glyphicon glyphicon-paperclip"></i> รายงานบันทึก ClaimCode ตามช่วงวันที่</div>
     <div class="panel-body">

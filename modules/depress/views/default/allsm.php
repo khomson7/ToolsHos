@@ -29,14 +29,18 @@ echo "<div id='modalContent'> <h3> กำลังประมวลผลข้
 yii\bootstrap4\Modal::end();
 ?>
 
+<div class="d-flex flex-column">
+     <div class="d-flex justify-content-center"> 
+<div class="alert bg_col_pink" role="alert">
+           <div class="d-flex justify-content-center">เลือกวันที่ประมวลผล </div>
 <?php
 $form = ActiveForm::begin(['method' => 'get',
     'action' => Url::to(['default/allsm'])]);
 ?>
 <div class='well'>
-        วันที่
+       <br>
     <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="col-xs-6 col-sm-6 col-md-6">
             <?php
 echo yii\jui\DatePicker::widget([
     'name' => 'date1',
@@ -54,9 +58,10 @@ echo yii\jui\DatePicker::widget([
 ?>
 
         </div>
-        <div class="col-xs-2 col-sm-2 col-md-2">
-            <button class='showModalButton btn btn-danger'>ประมวลผล</button>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <button class='showModalButton btn btn-info'>ประมวลผล</button>
         </div>
+    </div>
     </div>
     <br>
 <?php ActiveForm::end();?>
