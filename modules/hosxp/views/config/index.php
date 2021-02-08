@@ -30,7 +30,7 @@ yii\bootstrap4\Modal::end();
 
 <div class="container p-3 my-3 bg-default text-white">
 <div class="panel panel-primary">
-<div class="panel-heading"><i class="glyphicon glyphicon-cog"></i> <?= $this->title ?></div>
+
     <div class="panel-body">
     
 
@@ -39,7 +39,7 @@ yii\bootstrap4\Modal::end();
        // 'filterModel' => $searchModel,
 
        'panel' => [
-        'heading' => '<h2 class="panel-title"><i class="glyphicon glyphicon-cog"></i> ตั้งค่าระบบ </h2><br>'
+        'heading' => '<h2 class="panel-title"><i class="fa fa-cog"></i> ตั้งค่าระบบ </h2><br>'
     ,
         'type' => 'warning',
         
