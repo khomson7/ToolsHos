@@ -54,7 +54,7 @@ yii\bootstrap4\Modal::end();
             <h3><?=Html::a('(' . (Yii::$app->user->identity->username) . ')')?></h3>
             </div>
             <div class="d-flex justify-content-center">
-            <?=Html::a('<i class=" fa fa-cog"></i>', ['/user/admin'], ['class' => ''])?>
+            <?=Html::a('<i class=" fa fa-gear"></i>', ['/user/admin'], ['class' => ''])?>
              </div>
              
                <?php if (Yii::$app->user->identity->role == app\models\Users::ROLE_PR) {?>
@@ -110,7 +110,7 @@ yii\bootstrap4\Modal::end();
                    
                      <div class="d-flex justify-content-center">
                     <div class="btn-group btn-group-sm" role="group" aria-label="..."><p>
-                            <?=Html::a('<i class="fa fa-cloud"></i> ข้อมูลรายงาน', ['/hosxp/default/index'], ['class' => 'btn btn-info'])?>
+                            <?=Html::a('<i class="fa fa-bar-chart-o"></i> ข้อมูลรายงาน', ['/hosxp/default/index'], ['class' => 'btn btn-info'])?>
                         </p></div>
                         </div>
                 </div>
