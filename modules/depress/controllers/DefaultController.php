@@ -210,7 +210,7 @@ class DefaultController extends Controller
 
         foreach ($data['data'] as $key => $item) {
 
-            $date = $item['b_date'];
+            $date = $item['d_process'];
         }
 
         if ($date1 == null) {
