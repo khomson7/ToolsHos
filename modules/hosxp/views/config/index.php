@@ -52,7 +52,7 @@ yii\bootstrap4\Modal::end();
                 'options' => ['style' => 'width:90px;'],
                 'template' => '<div class="btn-group btn-group-sm" role="group" aria-label="...">{update}</div>',
                 'buttons' => [
-                    'update' => function($url, $model, $key) {
+                    'update1' => function($url, $model, $key) {
                         return Html::a('<i class="glyphicon glyphicon-pencil"></i>', $url, ['class' => 'btn btn-warning']);
                     }, // 
                     'update' => function($url, $model, $key) {
