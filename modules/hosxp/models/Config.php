@@ -30,7 +30,7 @@ class Config extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['befor_byear', 'byear'], 'safe'],
+            [['befor_byear', 'byear','thbyear'], 'safe'],
             [['hospcode'], 'string', 'max' => 5],
             [['chwpart', 'amppart'], 'string', 'max' => 2],
         ];
@@ -48,6 +48,7 @@ class Config extends \yii\db\ActiveRecord
             'byear' => 'Byear',
             'chwpart' => 'รหัสจังหวัด',
             'amppart' => 'รหัสอำเภอ',
+            'thbyear' => 'ปีงบปรมาณ',
         ];
     }
 }

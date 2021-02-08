@@ -181,6 +181,21 @@ class DefaultController extends Controller
 
         }
 
+        $rows2 = (new \yii\db\Query())
+            ->select(['hospcode','chwpart','amppart','befor_byear','byear'])
+            ->from('config')
+          //  ->where('user_id = :id', [':id' => $user_id])
+            ->all();
+      
+        foreach ($rows2 as $rows2) {
+
+            $hospcode = $rows2['hospcode'];
+            $chwpart= $rows2['chwpart'];
+            $amppart = $rows2['amppart'];
+            $befor_byear = $rows2['befor_byear'];
+            $byear= $rows2['byear'];
+        }
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -247,7 +262,7 @@ class DefaultController extends Controller
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "$url/ppspecials/allsm/$date1", //เปลี่ยนแปลง
+            CURLOPT_URL => "$url/ppspecials/allsm/$hospcode/$chwpart/$amppart/$befor_byear/$byear/$date1", //เปลี่ยนแปลง
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -271,7 +286,7 @@ class DefaultController extends Controller
 
         // echo $datacount;
 
-        foreach ($data['data'] as $key => $item) {
+       foreach ($data['data'] as $key => $item) {
 
             $pp_special_id = $item['pp_special_id'];
             $vn = $item['vn'];
@@ -314,14 +329,14 @@ class DefaultController extends Controller
             curl_close($curl);
 
 
-        }
+        } 
 
         foreach ($data['data'] as $key => $item2) {
 
             
             $vn = $item2['vn']; 
             $entry_datetime = $item2['entry_datetime'];
-            $hn = $item['hn'];
+            $hn = $item2['hn'];
 
             $curl = curl_init();
 
@@ -390,6 +405,21 @@ class DefaultController extends Controller
     public function actionAllAutoSm($date1 = null)
     {
 
+        $rows2 = (new \yii\db\Query())
+            ->select(['hospcode','chwpart','amppart','befor_byear','byear'])
+            ->from('config')
+          //  ->where('user_id = :id', [':id' => $user_id])
+            ->all();
+       
+        foreach ($rows2 as $rows2) {
+
+            $hospcode = $rows2['hospcode'];
+            $chwpart= $rows2['chwpart'];
+            $amppart = $rows2['amppart'];
+            $befor_byear = $rows2['befor_byear'];
+            $byear= $rows2['byear'];
+        }
+        
         $date0 = date('Y-m-d');
         $sql = " REPLACE INTO `date_process` (`id`, `b_date`) VALUES ('1',' $date0') ";
         \Yii::$app->db->createCommand($sql)->execute();
@@ -457,7 +487,7 @@ class DefaultController extends Controller
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "$url/ppspecials/allsm/$date1", //เปลี่ยนแปลง
+            CURLOPT_URL => "$url/ppspecials/allsm/$hospcode/$chwpart/$amppart/$befor_byear/$byear/$date1", //เปลี่ยนแปลง
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -527,6 +557,42 @@ class DefaultController extends Controller
             $response = curl_exec($curl);
 
             curl_close($curl);
+
+        }
+
+        foreach ($data['data'] as $key => $item2) {
+
+            
+            $vn = $item2['vn']; 
+            $entry_datetime = $item2['entry_datetime'];
+            $hn = $item2['hn'];
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => "$url/ppspecials/psmonit",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS => "{
+                \"vn\":\"$vn\",
+                \"entry_datetime\":\"$entry_datetime\",
+                \"hn\":\"$hn\"
+                    }",
+                CURLOPT_HTTPHEADER => array(
+                    "Authorization: Bearer $token",
+                    "Content-Type: application/json",
+                ),
+            ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+
 
         }
 

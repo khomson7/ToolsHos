@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Configs', 'url' => ['index']];
 
 
 <div class="container p-3 my-3 bg-default text-white">
-    <?= $this->render('_form', [
+    <?= $this->render('_formbyear', [
         'model' => $model,
     ]) ?>
 

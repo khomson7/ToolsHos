@@ -18,7 +18,7 @@ class ConfigSearch extends Config
     {
         return [
             [['id'], 'integer'],
-            [['hospcode', 'befor_byear', 'byear', 'chwpart', 'amppart'], 'safe'],
+            [['hospcode', 'befor_byear', 'byear', 'chwpart', 'amppart','thbyear'], 'safe'],
         ];
     }
 

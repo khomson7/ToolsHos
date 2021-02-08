@@ -43,20 +43,21 @@ yii\bootstrap4\Modal::end();
     ,
         'type' => 'warning',
         
-                'before' => Html::a('<i class="fa fa-calendar" aria-hidden="true"></i> ตั้งค่าปีงบ', ['#'], ['class' => '']) ,
+                'before' => Html::a('<i class="fa fa-user-circle-o" aria-hidden="true"></i> ตั้งค่าผู้ใช้งาน', ['/user/admin'], ['class' => '']) .' &nbsp;&nbsp; '
+                .Html::a('<i class="fa fa-check-square-o" aria-hidden="true""></i> จัดการสิทธผู้ใช้งาน', ['/admin'], ['class' => ''])  ,
     ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'options' => ['style' => 'width:90px;'],
-                'template' => '<div class="btn-group btn-group-sm" role="group" aria-label="...">{update}</div>',
+                'template' => '<div class="btn-group btn-group-sm" role="group" aria-label="...">{updatebyear} {update}</div>',
                 'buttons' => [
-                    'update1' => function($url, $model, $key) {
-                        return Html::a('<i class="glyphicon glyphicon-pencil"></i>', $url, ['class' => 'btn btn-warning']);
+                    'updatebyear' => function($url, $model, $key) {
+                        return Html::a('<i class="fa fa-calendar" aria-hidden="true"></i>', $url, ['title' => 'ตั้งค่าปีงบ','class' => 'btn btn-warning']);
                     }, // 
                     'update' => function($url, $model, $key) {
-                        return Html::a('<i class="fa fa-university" aria-hidden="true"></i>', $url, ['class' => 'btn btn-info']);
+                        return Html::a('<i class="fa fa-university" aria-hidden="true"></i>', $url, ['title' => 'ตั้งค่าหน่วยบริการ','class' => 'btn btn-info']);
                     }, // 
                 ]
             ],

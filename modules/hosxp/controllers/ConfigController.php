@@ -33,6 +33,11 @@ class ConfigController extends Controller
      * Lists all Config models.
      * @return mixed
      */
+
+    protected function exec_tbtools($sql = null)
+    {
+        return \Yii::$app->db->createCommand($sql)->execute();
+    }
     public function actionIndex()
     {
         $searchModel = new ConfigSearch();
@@ -93,6 +98,24 @@ class ConfigController extends Controller
         }
 
         return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionUpdatebyear($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $sql = "update config c
+            SET c.befor_byear = concat((thbyear-544),'-09-30'),c.byear = concat((thbyear-543),'-01-01')";
+        $this->exec_tbtools($sql);
+
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('updatebyear', [
             'model' => $model,
         ]);
     }

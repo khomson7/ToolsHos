@@ -3,7 +3,7 @@
 return [
     'admin' => [
         'class' => 'mdm\admin\Module',
-        'layout' => 'left-menu',
+        'layout' => 'left-menu', //กำหนดเมนูอยู่ด้านซ้าย
         'menus' => [
             'assignment' => [
                 'label' => 'Grant Access', // change label
@@ -18,6 +18,7 @@ return [
         'admins' => ['admin'],
     ],
     'rbac' => 'dektrium\rbac\RbacWebModule',
+
     'gridview' => [
        'class' => '\kartik\grid\Module',
     ],
