@@ -43,7 +43,7 @@ yii\bootstrap4\Modal::end();
     ,
         'type' => 'warning',
         
-                'before' => '<button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-calendar">&nbsp;ตั้งค่าปีงบ</i></button>' ,
+                'before' => Html::a('<i class="fa fa-calendar" aria-hidden="true"></i> ตั้งค่าปีงบ', ['#'], ['class' => '']) ,
     ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
