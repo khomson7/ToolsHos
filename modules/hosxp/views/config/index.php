@@ -56,7 +56,7 @@ yii\bootstrap4\Modal::end();
                         return Html::a('<i class="glyphicon glyphicon-pencil"></i>', $url, ['class' => 'btn btn-warning']);
                     }, // 
                     'update' => function($url, $model, $key) {
-                        return Html::a('<i class="class="fa fa-university" aria-hidden="true"></i>', $url, ['class' => 'btn btn-info']);
+                        return Html::a('<i class="fa fa-university" aria-hidden="true"></i>', $url, ['class' => 'btn btn-info']);
                     }, // 
                 ]
             ],
