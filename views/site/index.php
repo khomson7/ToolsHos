@@ -54,7 +54,7 @@ yii\bootstrap4\Modal::end();
             <h3><?=Html::a('(' . (Yii::$app->user->identity->username) . ')')?></h3>
             </div>
             <div class="d-flex justify-content-center">
-            <?=Html::a('<i class=" fa fa-gear"></i>', ['/user/admin'], ['class' => ''])?>
+            <?=Html::a('<i class=" fa fa-gear"></i>', ['/hosxp/config'], ['class' => ''])?>
              </div>
              
                <?php if (Yii::$app->user->identity->role == app\models\Users::ROLE_PR) {?>
