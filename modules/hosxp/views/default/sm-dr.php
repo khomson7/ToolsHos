@@ -39,7 +39,7 @@ yii\bootstrap4\Modal::end();
 
 <div class="container p-3 my-3 bg-default text-white">
 <div class="panel panel-primary">
-    <div class="panel-heading"><i class="glyphicon glyphicon-paperclip"></i> <?= $this->title ?></div>
+    
     <div class="panel-body">
 <?php
 $form = ActiveForm::begin(['method' => 'get',
