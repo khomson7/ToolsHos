@@ -33,4 +33,7 @@ return [
     'wsc' => [
         'class' => 'app\modules\wsc\Module',
     ],
+    'chkchart' => [
+        'class' => 'app\modules\chkchart\Module',
+    ],
 ];
